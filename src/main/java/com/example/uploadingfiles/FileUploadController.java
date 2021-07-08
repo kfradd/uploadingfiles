@@ -1,5 +1,6 @@
 package com.example.uploadingfiles;
 
+import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -59,7 +60,7 @@ public class FileUploadController {
         return "redirect:/";
     }
 
-    @ExceptionHandler(StorageServiceFileNotFoundException.class)
+    @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
         return ResponseEntity.notFound().build();
     }
